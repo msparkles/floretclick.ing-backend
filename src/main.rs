@@ -1,12 +1,9 @@
+use floretclicking_backend::api::user;
+
 #[macro_use]
 extern crate rocket;
 
-#[get("/")]
-fn index() -> &'static str {
-    "Hello, world!"
-}
-
 #[launch]
 fn rocket() -> _ {
-    rocket::build().mount("/", routes![index])
+    rocket::build().mount("/user", routes![user::get_user, user::new_user])
 }
